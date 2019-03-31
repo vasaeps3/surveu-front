@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
+import './App.scss';
+import { AuthLayout, DefaultLayout } from './containers';
 
-import { DefaultLayout, AuthLayout } from './containers';
-
+// Containers
+const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Route exact path="/" component={DefaultLayout} />
-        <Route path="/auth" component={AuthLayout} />
+        <Switch>
+          <Route exact path="/" component={DefaultLayout} />
+          <Route path="/auth" component={AuthLayout} />
+        </Switch>
       </Router>
     );
   }
